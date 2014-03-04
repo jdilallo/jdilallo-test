@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>googleads.errors</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="googleads-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/jdilallo/jdilallo-test">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="googleads-module.html">Package&nbsp;googleads</a> ::
+        Module&nbsp;errors
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="googleads.errors-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="googleads.errors-module.html">Module googleads.errors</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2013 Google Inc. All Rights Reserved.</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># Licensed under the Apache License, Version 2.0 (the "License");</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># you may not use this file except in compliance with the License.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># You may obtain a copy of the License at</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#      http://www.apache.org/licenses/LICENSE-2.0</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># Unless required by applicable law or agreed to in writing, software</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># distributed under the License is distributed on an "AS IS" BASIS,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># See the License for the specific language governing permissions and</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># limitations under the License.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">"""Errors used by the Google Ads Client Library."""</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Joseph DiLallo'</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="GoogleAdsError"></a><div id="GoogleAdsError-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="GoogleAdsError-toggle" onclick="return toggle('GoogleAdsError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.errors.GoogleAdsError-class.html">GoogleAdsError</a><tt class="py-op">(</tt><tt class="py-base-class">Exception</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GoogleAdsError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GoogleAdsError-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">  <tt class="py-docstring">"""Parent class of all errors raised by this library."""</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">  <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="GoogleAdsValueError"></a><div id="GoogleAdsValueError-def"><a name="L25"></a><tt class="py-lineno"> 25</tt> <a class="py-toggle" href="#" id="GoogleAdsValueError-toggle" onclick="return toggle('GoogleAdsValueError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.errors.GoogleAdsValueError-class.html">GoogleAdsValueError</a><tt class="py-op">(</tt><tt class="py-base-class">GoogleAdsError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GoogleAdsValueError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GoogleAdsValueError-expanded"><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">  <tt class="py-docstring">"""Error indicating that the user input for a function was invalid."""</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">  <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="AdWordsReportError"></a><div id="AdWordsReportError-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="AdWordsReportError-toggle" onclick="return toggle('AdWordsReportError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.errors.AdWordsReportError-class.html">AdWordsReportError</a><tt class="py-op">(</tt><tt class="py-base-class">GoogleAdsError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AdWordsReportError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AdWordsReportError-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">  <tt class="py-docstring">"""Error indicating that an AdWords report download request failed.</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">  Attributes:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    code: The HTTP status code with which the report failed.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    error: The urllib2.HTTPError (Python 2) or urllib.error.HTTPError</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">          (Python 3) describing the failure.</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">    content: The actual HTTP response content. This could be something like a</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">        404 page or an XML error message from the AdWords report service.</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="AdWordsReportError.__init__"></a><div id="AdWordsReportError.__init__-def"><a name="L41"></a><tt class="py-lineno"> 41</tt> <a class="py-toggle" href="#" id="AdWordsReportError.__init__-toggle" onclick="return toggle('AdWordsReportError.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.errors.AdWordsReportError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">code</tt><tt class="py-op">,</tt> <tt class="py-param">error</tt><tt class="py-op">,</tt> <tt class="py-param">content</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AdWordsReportError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="AdWordsReportError.__init__-expanded"><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes an AdWordsReportError.</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">      code: The HTTP status code number that was returned.</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">      error: The urllib2.HTTPError (Python 2) or urllib.error.HTTPError</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">          (Python 3) describing the failure.</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">      content: The HTTP response body as a string.</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">      message: A user-friendly error message string. If one is not provided, a</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">          default message will be used.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-0" class="py-name" targets="Class googleads.errors.AdWordsReportError=googleads.errors.AdWordsReportError-class.html"><a title="googleads.errors.AdWordsReportError" class="py-name" href="#" onclick="return doclink('link-0', 'AdWordsReportError', 'link-0');">AdWordsReportError</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Method googleads.adwords.AdWordsClient.__init__()=googleads.adwords.AdWordsClient-class.html#__init__,Method googleads.adwords.ReportDownloader.__init__()=googleads.adwords.ReportDownloader-class.html#__init__,Method googleads.adwords._AdWordsHeaderHandler.__init__()=googleads.adwords._AdWordsHeaderHandler-class.html#__init__,Method googleads.common.SudsServiceProxy.__init__()=googleads.common.SudsServiceProxy-class.html#__init__,Method googleads.dfa.DfaClient.__init__()=googleads.dfa.DfaClient-class.html#__init__,Method googleads.dfa._DfaHeaderHandler.__init__()=googleads.dfa._DfaHeaderHandler-class.html#__init__,Method googleads.dfp.DataDownloader.__init__()=googleads.dfp.DataDownloader-class.html#__init__,Method googleads.dfp.DfpClient.__init__()=googleads.dfp.DfpClient-class.html#__init__,Method googleads.dfp.FilterStatement.__init__()=googleads.dfp.FilterStatement-class.html#__init__,Method googleads.dfp._DfpHeaderHandler.__init__()=googleads.dfp._DfpHeaderHandler-class.html#__init__,Method googleads.errors.AdWordsReportBadRequestError.__init__()=googleads.errors.AdWordsReportBadRequestError-class.html#__init__,Method googleads.errors.AdWordsReportError.__init__()=googleads.errors.AdWordsReportError-class.html#__init__,Method googleads.errors.DfpReportError.__init__()=googleads.errors.DfpReportError-class.html#__init__,Method googleads.oauth2.GoogleRefreshTokenClient.__init__()=googleads.oauth2.GoogleRefreshTokenClient-class.html#__init__"><a title="googleads.adwords.AdWordsClient.__init__
+googleads.adwords.ReportDownloader.__init__
+googleads.adwords._AdWordsHeaderHandler.__init__
+googleads.common.SudsServiceProxy.__init__
+googleads.dfa.DfaClient.__init__
+googleads.dfa._DfaHeaderHandler.__init__
+googleads.dfp.DataDownloader.__init__
+googleads.dfp.DfpClient.__init__
+googleads.dfp.FilterStatement.__init__
+googleads.dfp._DfpHeaderHandler.__init__
+googleads.errors.AdWordsReportBadRequestError.__init__
+googleads.errors.AdWordsReportError.__init__
+googleads.errors.DfpReportError.__init__
+googleads.oauth2.GoogleRefreshTokenClient.__init__" class="py-name" href="#" onclick="return doclink('link-1', '__init__', 'link-1');">__init__</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">message</tt> <tt class="py-keyword">if</tt> <tt class="py-name">message</tt> <tt class="py-keyword">else</tt> <tt class="py-op">(</tt><tt class="py-string">'AdWords report download failed with HTTP '</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">                                 <tt class="py-string">'status code: %s'</tt> <tt class="py-op">%</tt> <tt class="py-name">code</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">code</tt> <tt class="py-op">=</tt> <tt class="py-name">code</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">error</tt> <tt class="py-op">=</tt> <tt class="py-name">error</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">content</tt> <tt class="py-op">=</tt> <tt class="py-name">content</tt> </tt>
+</div></div><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="AdWordsReportBadRequestError"></a><div id="AdWordsReportBadRequestError-def"><a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="AdWordsReportBadRequestError-toggle" onclick="return toggle('AdWordsReportBadRequestError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.errors.AdWordsReportBadRequestError-class.html">AdWordsReportBadRequestError</a><tt class="py-op">(</tt><tt class="py-base-class">AdWordsReportError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AdWordsReportBadRequestError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AdWordsReportBadRequestError-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">  <tt class="py-docstring">"""Error indicating a bad request was made to the AdWords report service.</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">  Attributes:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">    type: A string identifying what type of error this is.</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">    trigger: A string containing the value from your request that caused the</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">        problem.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">    field_path: A string showing where, in the report's fields, the trigger can</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">        be found.</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="AdWordsReportBadRequestError.__init__"></a><div id="AdWordsReportBadRequestError.__init__-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="AdWordsReportBadRequestError.__init__-toggle" onclick="return toggle('AdWordsReportBadRequestError.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.errors.AdWordsReportBadRequestError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">type_</tt><tt class="py-op">,</tt> <tt class="py-param">trigger</tt><tt class="py-op">,</tt> <tt class="py-param">field_path</tt><tt class="py-op">,</tt> <tt class="py-param">code</tt><tt class="py-op">,</tt> <tt class="py-param">error</tt><tt class="py-op">,</tt> <tt class="py-param">content</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AdWordsReportBadRequestError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="AdWordsReportBadRequestError.__init__-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes an AdWordsReportError.</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">      type_: A string identifying what type of error this is.</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">      trigger: A string containing the value from your request that caused the</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">          problem.</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">      field_path: A string showing where, in the report's fields, the trigger</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">          can be found.</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">      code: The HTTP status code number that was returned.</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">      error: The urllib2.HTTPError (Python 2) or urllib.error.HTTPError</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">          (Python 3) describing the failure.</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">      content: The HTTP response body as a string.</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-2" class="py-name" targets="Class googleads.errors.AdWordsReportBadRequestError=googleads.errors.AdWordsReportBadRequestError-class.html"><a title="googleads.errors.AdWordsReportBadRequestError" class="py-name" href="#" onclick="return doclink('link-2', 'AdWordsReportBadRequestError', 'link-2');">AdWordsReportBadRequestError</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="googleads.adwords.AdWordsClient.__init__
+googleads.adwords.ReportDownloader.__init__
+googleads.adwords._AdWordsHeaderHandler.__init__
+googleads.common.SudsServiceProxy.__init__
+googleads.dfa.DfaClient.__init__
+googleads.dfa._DfaHeaderHandler.__init__
+googleads.dfp.DataDownloader.__init__
+googleads.dfp.DfpClient.__init__
+googleads.dfp.FilterStatement.__init__
+googleads.dfp._DfpHeaderHandler.__init__
+googleads.errors.AdWordsReportBadRequestError.__init__
+googleads.errors.AdWordsReportError.__init__
+googleads.errors.DfpReportError.__init__
+googleads.oauth2.GoogleRefreshTokenClient.__init__" class="py-name" href="#" onclick="return doclink('link-3', '__init__', 'link-1');">__init__</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">code</tt><tt class="py-op">,</tt> <tt class="py-name">error</tt><tt class="py-op">,</tt> <tt class="py-name">content</tt><tt class="py-op">,</tt> <tt class="py-string">'Type: %s\nTrigger: %s\nField Path: %s'</tt> <tt class="py-op">%</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">type_</tt><tt class="py-op">,</tt> <tt class="py-name">trigger</tt><tt class="py-op">,</tt> <tt class="py-name">field_path</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">type</tt> <tt class="py-op">=</tt> <tt class="py-name">type_</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">trigger</tt> <tt class="py-op">=</tt> <tt class="py-name">trigger</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">field_path</tt> <tt class="py-op">=</tt> <tt class="py-name">field_path</tt> </tt>
+</div></div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="DfpReportError"></a><div id="DfpReportError-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="DfpReportError-toggle" onclick="return toggle('DfpReportError');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.errors.DfpReportError-class.html">DfpReportError</a><tt class="py-op">(</tt><tt class="py-base-class">GoogleAdsError</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfpReportError-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DfpReportError-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">  <tt class="py-docstring">"""Error indicating that a DFP report download request failed.</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">  Attributes:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">    report_job_id: The ID of the report job which failed.</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="DfpReportError.__init__"></a><div id="DfpReportError.__init__-def"><a name="L101"></a><tt class="py-lineno">101</tt> <a class="py-toggle" href="#" id="DfpReportError.__init__-toggle" onclick="return toggle('DfpReportError.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.errors.DfpReportError-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">report_job_id</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfpReportError.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfpReportError.__init__-expanded"><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes a DfpReportError.</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">      report_job_id: The ID of the report job which failed.</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-4" class="py-name" targets="Class googleads.errors.DfpReportError=googleads.errors.DfpReportError-class.html"><a title="googleads.errors.DfpReportError" class="py-name" href="#" onclick="return doclink('link-4', 'DfpReportError', 'link-4');">DfpReportError</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="googleads.adwords.AdWordsClient.__init__
+googleads.adwords.ReportDownloader.__init__
+googleads.adwords._AdWordsHeaderHandler.__init__
+googleads.common.SudsServiceProxy.__init__
+googleads.dfa.DfaClient.__init__
+googleads.dfa._DfaHeaderHandler.__init__
+googleads.dfp.DataDownloader.__init__
+googleads.dfp.DfpClient.__init__
+googleads.dfp.FilterStatement.__init__
+googleads.dfp._DfpHeaderHandler.__init__
+googleads.errors.AdWordsReportBadRequestError.__init__
+googleads.errors.AdWordsReportError.__init__
+googleads.errors.DfpReportError.__init__
+googleads.oauth2.GoogleRefreshTokenClient.__init__" class="py-name" href="#" onclick="return doclink('link-5', '__init__', 'link-1');">__init__</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-string">'DFP report job failed. The ID of the failed report is: %s'</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-op">%</tt> <tt class="py-name">report_job_id</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">report_job_id</tt> <tt class="py-op">=</tt> <tt class="py-name">report_job_id</tt> </tt>
+</div></div><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="googleads-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/jdilallo/jdilallo-test">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Mar  4 13:19:36 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

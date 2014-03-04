@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>googleads.dfp</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="googleads-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/jdilallo/jdilallo-test">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="googleads-module.html">Package&nbsp;googleads</a> ::
+        Module&nbsp;dfp
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="googleads.dfp-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="googleads.dfp-module.html">Module googleads.dfp</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2013 Google Inc. All Rights Reserved.</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># Licensed under the Apache License, Version 2.0 (the "License");</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># you may not use this file except in compliance with the License.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># You may obtain a copy of the License at</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#      http://www.apache.org/licenses/LICENSE-2.0</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># Unless required by applicable law or agreed to in writing, software</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># distributed under the License is distributed on an "AS IS" BASIS,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># See the License for the specific language governing permissions and</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># limitations under the License.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">"""Client library for the DoubleClick for Publishers API."""</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Joseph DiLallo'</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">csv</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">datetime</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">urllib2</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pytz</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">client</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">transport</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package googleads=googleads-module.html"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-0', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module googleads.common=googleads.common-module.html"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-1', 'common', 'link-1');">common</a></tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-2', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module googleads.errors=googleads.errors-module.html"><a title="googleads.errors" class="py-name" href="#" onclick="return doclink('link-3', 'errors', 'link-3');">errors</a></tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-comment"># The suggested page limit per page fetched from the API.</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable googleads.dfp.SUGGESTED_PAGE_LIMIT=googleads.dfp-module.html#SUGGESTED_PAGE_LIMIT"><a title="googleads.dfp.SUGGESTED_PAGE_LIMIT" class="py-name" href="#" onclick="return doclink('link-4', 'SUGGESTED_PAGE_LIMIT', 'link-4');">SUGGESTED_PAGE_LIMIT</a></tt> <tt class="py-op">=</tt> <tt class="py-number">500</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-comment"># The chunk size used for report downloads.</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable googleads.adwords._CHUNK_SIZE=googleads.adwords-module.html#_CHUNK_SIZE,Variable googleads.dfp._CHUNK_SIZE=googleads.dfp-module.html#_CHUNK_SIZE"><a title="googleads.adwords._CHUNK_SIZE
+googleads.dfp._CHUNK_SIZE" class="py-name" href="#" onclick="return doclink('link-5', '_CHUNK_SIZE', 'link-5');">_CHUNK_SIZE</a></tt> <tt class="py-op">=</tt> <tt class="py-number">16</tt> <tt class="py-op">*</tt> <tt class="py-number">1024</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-comment"># A giant dictionary of DFP versions and the services they support.</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable googleads.adwords._SERVICE_MAP=googleads.adwords-module.html#_SERVICE_MAP,Variable googleads.dfa.DfaClient._SERVICE_MAP=googleads.dfa.DfaClient-class.html#_SERVICE_MAP,Variable googleads.dfp._SERVICE_MAP=googleads.dfp-module.html#_SERVICE_MAP"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-6', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt class="py-string">'v201311'</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'ActivityGroupService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ActivityService'</tt><tt class="py-op">,</tt> <tt class="py-string">'AdRuleService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">         <tt class="py-string">'AudienceSegmentService'</tt><tt class="py-op">,</tt> <tt class="py-string">'BaseRateService'</tt><tt class="py-op">,</tt> <tt class="py-string">'CompanyService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">         <tt class="py-string">'ContactService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ContentBundleService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">         <tt class="py-string">'ContentMetadataKeyHierarchyService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ContentService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">         <tt class="py-string">'CreativeService'</tt><tt class="py-op">,</tt> <tt class="py-string">'CreativeSetService'</tt><tt class="py-op">,</tt> <tt class="py-string">'CreativeTemplateService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">         <tt class="py-string">'CreativeWrapperService'</tt><tt class="py-op">,</tt> <tt class="py-string">'CustomFieldService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">         <tt class="py-string">'CustomTargetingService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ExchangeRateService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ForecastService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">         <tt class="py-string">'InventoryService'</tt><tt class="py-op">,</tt> <tt class="py-string">'LabelService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">         <tt class="py-string">'LineItemCreativeAssociationService'</tt><tt class="py-op">,</tt> <tt class="py-string">'LineItemService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">         <tt class="py-string">'LineItemTemplateService'</tt><tt class="py-op">,</tt> <tt class="py-string">'NetworkService'</tt><tt class="py-op">,</tt> <tt class="py-string">'OrderService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">         <tt class="py-string">'PlacementService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ProductService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ProductTemplateService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">         <tt class="py-string">'ProposalLineItemService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ProposalService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">         <tt class="py-string">'PublisherQueryLanguageService'</tt><tt class="py-op">,</tt> <tt class="py-string">'RateCardCustomizationService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">         <tt class="py-string">'RateCardService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ReconciliationOrderReportService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">         <tt class="py-string">'ReconciliationReportRowService'</tt><tt class="py-op">,</tt> <tt class="py-string">'ReconciliationReportService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">         <tt class="py-string">'ReportService'</tt><tt class="py-op">,</tt> <tt class="py-string">'SuggestedAdUnitService'</tt><tt class="py-op">,</tt> <tt class="py-string">'TeamService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">         <tt class="py-string">'UserService'</tt><tt class="py-op">,</tt> <tt class="py-string">'UserTeamAssociationService'</tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">         <tt class="py-string">'WorkflowRequestService'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-op">}</tt> </tt>
+<a name="DfpClient"></a><div id="DfpClient-def"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="DfpClient-toggle" onclick="return toggle('DfpClient');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.dfp.DfpClient-class.html">DfpClient</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfpClient-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DfpClient-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">  <tt class="py-docstring">"""A central location to set headers and create web service clients.</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">  Attributes:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">    oauth2_client: A googleads.oauth2.GoogleOAuth2Client used to authorize your</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">        requests.</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">    application_name: An arbitrary string which will be used to identify your</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">        application</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">    network_code: A string identifying the network code of the network you are</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">        accessing. All requests other than some NetworkService calls require</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">        this header to be set.</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">    https_proxy: A string identifying the URL of a proxy that all HTTPS requests</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">        should be routed through. Modifying this value will not affect any SOAP</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">        service clients you've already created.</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">  <tt class="py-comment"># The key in the storage yaml which contains DFP data.</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">  <tt id="link-7" class="py-name" targets="Variable googleads.adwords.AdWordsClient._YAML_KEY=googleads.adwords.AdWordsClient-class.html#_YAML_KEY,Variable googleads.dfa.DfaClient._YAML_KEY=googleads.dfa.DfaClient-class.html#_YAML_KEY,Variable googleads.dfp.DfpClient._YAML_KEY=googleads.dfp.DfpClient-class.html#_YAML_KEY"><a title="googleads.adwords.AdWordsClient._YAML_KEY
+googleads.dfa.DfaClient._YAML_KEY
+googleads.dfp.DfpClient._YAML_KEY" class="py-name" href="#" onclick="return doclink('link-7', '_YAML_KEY', 'link-7');">_YAML_KEY</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'dfp'</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">  <tt class="py-comment"># A list of values which must be provided to use DFP.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">  <tt id="link-8" class="py-name" targets="Variable googleads.adwords.AdWordsClient._REQUIRED_INIT_VALUES=googleads.adwords.AdWordsClient-class.html#_REQUIRED_INIT_VALUES,Variable googleads.dfa.DfaClient._REQUIRED_INIT_VALUES=googleads.dfa.DfaClient-class.html#_REQUIRED_INIT_VALUES,Variable googleads.dfp.DfpClient._REQUIRED_INIT_VALUES=googleads.dfp.DfpClient-class.html#_REQUIRED_INIT_VALUES"><a title="googleads.adwords.AdWordsClient._REQUIRED_INIT_VALUES
+googleads.dfa.DfaClient._REQUIRED_INIT_VALUES
+googleads.dfp.DfpClient._REQUIRED_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-8', '_REQUIRED_INIT_VALUES', 'link-8');">_REQUIRED_INIT_VALUES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'application_name'</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">  <tt class="py-comment"># A list of values which may optionally be provided when using DFP.</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">  <tt id="link-9" class="py-name" targets="Variable googleads.adwords.AdWordsClient._OPTIONAL_INIT_VALUES=googleads.adwords.AdWordsClient-class.html#_OPTIONAL_INIT_VALUES,Variable googleads.dfa.DfaClient._OPTIONAL_INIT_VALUES=googleads.dfa.DfaClient-class.html#_OPTIONAL_INIT_VALUES,Variable googleads.dfp.DfpClient._OPTIONAL_INIT_VALUES=googleads.dfp.DfpClient-class.html#_OPTIONAL_INIT_VALUES"><a title="googleads.adwords.AdWordsClient._OPTIONAL_INIT_VALUES
+googleads.dfa.DfaClient._OPTIONAL_INIT_VALUES
+googleads.dfp.DfpClient._OPTIONAL_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-9', '_OPTIONAL_INIT_VALUES', 'link-9');">_OPTIONAL_INIT_VALUES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">      <tt class="py-string">'network_code'</tt><tt class="py-op">,</tt> <tt class="py-string">'https_proxy'</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">  <tt class="py-comment"># The format of SOAP service WSDLs. A server, version, and service name need</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">  <tt class="py-comment"># to be formatted in.</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">  <tt id="link-10" class="py-name" targets="Variable googleads.adwords.AdWordsClient._SOAP_SERVICE_FORMAT=googleads.adwords.AdWordsClient-class.html#_SOAP_SERVICE_FORMAT,Variable googleads.dfa.DfaClient._SOAP_SERVICE_FORMAT=googleads.dfa.DfaClient-class.html#_SOAP_SERVICE_FORMAT,Variable googleads.dfp.DfpClient._SOAP_SERVICE_FORMAT=googleads.dfp.DfpClient-class.html#_SOAP_SERVICE_FORMAT"><a title="googleads.adwords.AdWordsClient._SOAP_SERVICE_FORMAT
+googleads.dfa.DfaClient._SOAP_SERVICE_FORMAT
+googleads.dfp.DfpClient._SOAP_SERVICE_FORMAT" class="py-name" href="#" onclick="return doclink('link-10', '_SOAP_SERVICE_FORMAT', 'link-10');">_SOAP_SERVICE_FORMAT</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'%s/apis/ads/publisher/%s/%s?wsdl'</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">  <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="DfpClient.LoadFromStorage"></a><div id="DfpClient.LoadFromStorage-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="DfpClient.LoadFromStorage-toggle" onclick="return toggle('DfpClient.LoadFromStorage');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DfpClient-class.html#LoadFromStorage">LoadFromStorage</a><tt class="py-op">(</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">      <tt class="py-param">cls</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">=</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expanduser</tt><tt class="py-op">(</tt><tt class="py-string">'~'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'googleads.yaml'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfpClient.LoadFromStorage-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfpClient.LoadFromStorage-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-docstring">"""Creates a DfpClient with information stored in a yaml file.</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">      path: str The path to the file containing cached DFP data.</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">      A DfpClient initialized with the values cached in the file.</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">    Raises:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">      A GoogleAdsValueError if the given yaml file does not contain the</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">      information necessary to instantiate a client object - either a</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">      required key was missing or an OAuth 2.0 key was missing.</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">cls</tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt id="link-11" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-11', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-12', 'common', 'link-1');">common</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Class Method googleads.adwords.AdWordsClient.LoadFromStorage()=googleads.adwords.AdWordsClient-class.html#LoadFromStorage,Function googleads.common.LoadFromStorage()=googleads.common-module.html#LoadFromStorage,Class Method googleads.dfa.DfaClient.LoadFromStorage()=googleads.dfa.DfaClient-class.html#LoadFromStorage,Class Method googleads.dfp.DfpClient.LoadFromStorage()=googleads.dfp.DfpClient-class.html#LoadFromStorage"><a title="googleads.adwords.AdWordsClient.LoadFromStorage
+googleads.common.LoadFromStorage
+googleads.dfa.DfaClient.LoadFromStorage
+googleads.dfp.DfpClient.LoadFromStorage" class="py-name" href="#" onclick="return doclink('link-13', 'LoadFromStorage', 'link-13');">LoadFromStorage</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="googleads.adwords.AdWordsClient._YAML_KEY
+googleads.dfa.DfaClient._YAML_KEY
+googleads.dfp.DfpClient._YAML_KEY" class="py-name" href="#" onclick="return doclink('link-14', '_YAML_KEY', 'link-7');">_YAML_KEY</a></tt><tt class="py-op">,</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="googleads.adwords.AdWordsClient._REQUIRED_INIT_VALUES
+googleads.dfa.DfaClient._REQUIRED_INIT_VALUES
+googleads.dfp.DfpClient._REQUIRED_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-15', '_REQUIRED_INIT_VALUES', 'link-8');">_REQUIRED_INIT_VALUES</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="googleads.adwords.AdWordsClient._OPTIONAL_INIT_VALUES
+googleads.dfa.DfaClient._OPTIONAL_INIT_VALUES
+googleads.dfp.DfpClient._OPTIONAL_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-16', '_OPTIONAL_INIT_VALUES', 'link-9');">_OPTIONAL_INIT_VALUES</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="DfpClient.__init__"></a><div id="DfpClient.__init__-def"><a name="L109"></a><tt class="py-lineno">109</tt> <a class="py-toggle" href="#" id="DfpClient.__init__-toggle" onclick="return toggle('DfpClient.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DfpClient-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">oauth2_client</tt><tt class="py-op">,</tt> <tt class="py-param">application_name</tt><tt class="py-op">,</tt> <tt class="py-param">network_code</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">               <tt class="py-param">https_proxy</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfpClient.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfpClient.__init__-expanded"><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes a DfpClient.</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring">    For more information on these arguments, see our SOAP headers guide:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">    https://developers.google.com/doubleclick-publishers/docs/soap_xml</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">      oauth2_client: A googleads.oauth2.GoogleOAuth2Client used to authorize</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">          your requests.</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">      application_name: An arbitrary string which will be used to identify your</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring">          application</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring">      network_code: A string identifying the network code of the network you are</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">          accessing. All requests other than getAllNetworks and getCurrentUser</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring">          calls require this header to be set.</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">      https_proxy: A string identifying the URL of a proxy that all HTTPS</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">          requests should be routed through.</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">oauth2_client</tt> <tt class="py-op">=</tt> <tt class="py-name">oauth2_client</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">application_name</tt> <tt class="py-op">=</tt> <tt class="py-name">application_name</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">network_code</tt> <tt class="py-op">=</tt> <tt class="py-name">network_code</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">https_proxy</tt> <tt class="py-op">=</tt> <tt class="py-name">https_proxy</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_header_handler</tt> <tt class="py-op">=</tt> <tt id="link-17" class="py-name" targets="Class googleads.dfp._DfpHeaderHandler=googleads.dfp._DfpHeaderHandler-class.html"><a title="googleads.dfp._DfpHeaderHandler" class="py-name" href="#" onclick="return doclink('link-17', '_DfpHeaderHandler', 'link-17');">_DfpHeaderHandler</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"> </tt>
+<a name="DfpClient.GetService"></a><div id="DfpClient.GetService-def"><a name="L134"></a><tt class="py-lineno">134</tt> <a class="py-toggle" href="#" id="DfpClient.GetService-toggle" onclick="return toggle('DfpClient.GetService');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DfpClient-class.html#GetService">GetService</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">service_name</tt><tt class="py-op">,</tt> <tt class="py-param">version</tt><tt class="py-op">=</tt><tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt id="link-18" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-18', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                 <tt class="py-param">server</tt><tt class="py-op">=</tt><tt class="py-string">'https://www.google.com'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfpClient.GetService-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfpClient.GetService-expanded"><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-docstring">"""Creates a service client for the given service.</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">      service_name: A string identifying which DFP service to create a service</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">          client for.</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring">      version: A string identifying the DFP version to connect to. This defaults</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">          to what is currently the latest version. This will be updated in</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">          future releases to point to what is then the latest version.</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring">      server: A string identifying the webserver hosting the DFP API.</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-docstring">      A suds.client.ServiceSelector which has the headers and proxy configured</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-docstring">          for use.</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-docstring">    Raises:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-docstring">      A GoogleAdsValueError if the service or version provided do not exist.</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt class="py-name">server</tt> <tt class="py-op">=</tt> <tt class="py-name">server</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-keyword">if</tt> <tt class="py-name">server</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'/'</tt> <tt class="py-keyword">else</tt> <tt class="py-name">server</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">      <tt class="py-name">client</tt> <tt class="py-op">=</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">client</tt><tt class="py-op">.</tt><tt class="py-name">Client</tt><tt class="py-op">(</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">          <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="googleads.adwords.AdWordsClient._SOAP_SERVICE_FORMAT
+googleads.dfa.DfaClient._SOAP_SERVICE_FORMAT
+googleads.dfp.DfpClient._SOAP_SERVICE_FORMAT" class="py-name" href="#" onclick="return doclink('link-19', '_SOAP_SERVICE_FORMAT', 'link-10');">_SOAP_SERVICE_FORMAT</a></tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">server</tt><tt class="py-op">,</tt> <tt class="py-name">version</tt><tt class="py-op">,</tt> <tt class="py-name">service_name</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">          <tt class="py-name">plugins</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt id="link-20" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-20', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-21', 'common', 'link-1');">common</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Class googleads.common.Pruner=googleads.common.Pruner-class.html"><a title="googleads.common.Pruner" class="py-name" href="#" onclick="return doclink('link-22', 'Pruner', 'link-22');">Pruner</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">transport</tt><tt class="py-op">.</tt><tt class="py-name">TransportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">version</tt> <tt class="py-keyword">in</tt> <tt id="link-23" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-23', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">service_name</tt> <tt class="py-keyword">in</tt> <tt id="link-24" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-24', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt><tt class="py-op">[</tt><tt class="py-name">version</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">          <tt class="py-keyword">raise</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">          <tt class="py-keyword">raise</tt> <tt id="link-25" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-25', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="googleads.errors" class="py-name" href="#" onclick="return doclink('link-26', 'errors', 'link-3');">errors</a></tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Class googleads.errors.GoogleAdsValueError=googleads.errors.GoogleAdsValueError-class.html"><a title="googleads.errors.GoogleAdsValueError" class="py-name" href="#" onclick="return doclink('link-27', 'GoogleAdsValueError', 'link-27');">GoogleAdsValueError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">              <tt class="py-string">'Unrecognized service for the DFP API. Service given: %s '</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">              <tt class="py-string">'Supported services: %s'</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">              <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">service_name</tt><tt class="py-op">,</tt> <tt id="link-28" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-28', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt><tt class="py-op">[</tt><tt class="py-name">version</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">      <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-29" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-29', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="googleads.errors" class="py-name" href="#" onclick="return doclink('link-30', 'errors', 'link-3');">errors</a></tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="googleads.errors.GoogleAdsValueError" class="py-name" href="#" onclick="return doclink('link-31', 'GoogleAdsValueError', 'link-27');">GoogleAdsValueError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">            <tt class="py-string">'Unrecognized version of the DFP API. Version given: %s Supported '</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">            <tt class="py-string">'versions: %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">version</tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-32', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">https_proxy</tt><tt class="py-op">:</tt> <tt class="py-name">client</tt><tt class="py-op">.</tt><tt class="py-name">set_options</tt><tt class="py-op">(</tt><tt class="py-name">proxy</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'https'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">https_proxy</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-33" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-33', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-34', 'common', 'link-1');">common</a></tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Class googleads.common.SudsServiceProxy=googleads.common.SudsServiceProxy-class.html"><a title="googleads.common.SudsServiceProxy" class="py-name" href="#" onclick="return doclink('link-35', 'SudsServiceProxy', 'link-35');">SudsServiceProxy</a></tt><tt class="py-op">(</tt><tt class="py-name">client</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_header_handler</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"> </tt>
+<a name="DfpClient.GetDataDownloader"></a><div id="DfpClient.GetDataDownloader-def"><a name="L176"></a><tt class="py-lineno">176</tt> <a class="py-toggle" href="#" id="DfpClient.GetDataDownloader-toggle" onclick="return toggle('DfpClient.GetDataDownloader');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DfpClient-class.html#GetDataDownloader">GetDataDownloader</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">version</tt><tt class="py-op">=</tt><tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt id="link-36" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-36', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">                        <tt class="py-param">server</tt><tt class="py-op">=</tt><tt class="py-string">'https://www.google.com'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfpClient.GetDataDownloader-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfpClient.GetDataDownloader-expanded"><a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">    <tt class="py-docstring">"""Creates a downloader for DFP reports and PQL result sets.</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt class="py-docstring">    This is a convenience method. It is functionally identical to calling</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-docstring">    DataDownloader(dfp_client, version, server)</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"><tt class="py-docstring">      version: A string identifying the DFP version to connect to. This defaults</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-docstring">          to what is currently the latest version. This will be updated in</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-docstring">          future releases to point to what is then the latest version.</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-docstring">      server: A string identifying the webserver hosting the DFP API.</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"><tt class="py-docstring">      A DataDownloader tied to this DfpClient, ready to download reports.</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-37" class="py-name" targets="Class googleads.dfp.DataDownloader=googleads.dfp.DataDownloader-class.html"><a title="googleads.dfp.DataDownloader" class="py-name" href="#" onclick="return doclink('link-37', 'DataDownloader', 'link-37');">DataDownloader</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">version</tt><tt class="py-op">,</tt> <tt class="py-name">server</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"> </tt>
+<a name="_DfpHeaderHandler"></a><div id="_DfpHeaderHandler-def"><a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt> <a class="py-toggle" href="#" id="_DfpHeaderHandler-toggle" onclick="return toggle('_DfpHeaderHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.dfp._DfpHeaderHandler-class.html">_DfpHeaderHandler</a><tt class="py-op">(</tt><tt class="py-base-class">googleads</tt><tt class="py-op">.</tt><tt class="py-base-class">common</tt><tt class="py-op">.</tt><tt class="py-base-class">HeaderHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_DfpHeaderHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_DfpHeaderHandler-expanded"><a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">  <tt class="py-docstring">"""Handler which sets the headers for a DFP SOAP call."""</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">  <tt class="py-comment"># The library signature for DFP, to be appended to all application_names.</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">  <tt id="link-38" class="py-name" targets="Variable googleads.adwords._AdWordsHeaderHandler._LIB_SIG=googleads.adwords._AdWordsHeaderHandler-class.html#_LIB_SIG,Variable googleads.dfa._DfaHeaderHandler._LIB_SIG=googleads.dfa._DfaHeaderHandler-class.html#_LIB_SIG,Variable googleads.dfp._DfpHeaderHandler._LIB_SIG=googleads.dfp._DfpHeaderHandler-class.html#_LIB_SIG"><a title="googleads.adwords._AdWordsHeaderHandler._LIB_SIG
+googleads.dfa._DfaHeaderHandler._LIB_SIG
+googleads.dfp._DfpHeaderHandler._LIB_SIG" class="py-name" href="#" onclick="return doclink('link-38', '_LIB_SIG', 'link-38');">_LIB_SIG</a></tt> <tt class="py-op">=</tt> <tt id="link-39" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-39', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-40', 'common', 'link-1');">common</a></tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Function googleads.common.GenerateLibSig()=googleads.common-module.html#GenerateLibSig"><a title="googleads.common.GenerateLibSig" class="py-name" href="#" onclick="return doclink('link-41', 'GenerateLibSig', 'link-41');">GenerateLibSig</a></tt><tt class="py-op">(</tt><tt class="py-string">'DfpApi-Python'</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">  <tt class="py-comment"># The name of the WSDL-defined SOAP Header class used in all requests.</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">  <tt id="link-42" class="py-name" targets="Variable googleads.adwords._AdWordsHeaderHandler._SOAP_HEADER_CLASS=googleads.adwords._AdWordsHeaderHandler-class.html#_SOAP_HEADER_CLASS,Variable googleads.dfp._DfpHeaderHandler._SOAP_HEADER_CLASS=googleads.dfp._DfpHeaderHandler-class.html#_SOAP_HEADER_CLASS"><a title="googleads.adwords._AdWordsHeaderHandler._SOAP_HEADER_CLASS
+googleads.dfp._DfpHeaderHandler._SOAP_HEADER_CLASS" class="py-name" href="#" onclick="return doclink('link-42', '_SOAP_HEADER_CLASS', 'link-42');">_SOAP_HEADER_CLASS</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'SoapRequestHeader'</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"> </tt>
+<a name="_DfpHeaderHandler.__init__"></a><div id="_DfpHeaderHandler.__init__-def"><a name="L204"></a><tt class="py-lineno">204</tt> <a class="py-toggle" href="#" id="_DfpHeaderHandler.__init__-toggle" onclick="return toggle('_DfpHeaderHandler.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp._DfpHeaderHandler-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dfp_client</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_DfpHeaderHandler.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="_DfpHeaderHandler.__init__-expanded"><a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes a DfpHeaderHandler.</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"><tt class="py-docstring">      dfp_client: The DfpClient whose data will be used to fill in the headers.</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"><tt class="py-docstring">          We retain a reference to this object so that the header handler picks</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"><tt class="py-docstring">          up changes to the client.</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfp_client</tt> <tt class="py-op">=</tt> <tt class="py-name">dfp_client</tt> </tt>
+</div><a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"> </tt>
+<a name="_DfpHeaderHandler.SetHeaders"></a><div id="_DfpHeaderHandler.SetHeaders-def"><a name="L214"></a><tt class="py-lineno">214</tt> <a class="py-toggle" href="#" id="_DfpHeaderHandler.SetHeaders-toggle" onclick="return toggle('_DfpHeaderHandler.SetHeaders');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp._DfpHeaderHandler-class.html#SetHeaders">SetHeaders</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">suds_client</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_DfpHeaderHandler.SetHeaders-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="_DfpHeaderHandler.SetHeaders-expanded"><a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">    <tt class="py-docstring">"""Sets the SOAP and HTTP headers on the given suds client."""</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">    <tt class="py-name">header</tt> <tt class="py-op">=</tt> <tt class="py-name">suds_client</tt><tt class="py-op">.</tt><tt class="py-name">factory</tt><tt class="py-op">.</tt><tt class="py-name">create</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="googleads.adwords._AdWordsHeaderHandler._SOAP_HEADER_CLASS
+googleads.dfp._DfpHeaderHandler._SOAP_HEADER_CLASS" class="py-name" href="#" onclick="return doclink('link-43', '_SOAP_HEADER_CLASS', 'link-42');">_SOAP_HEADER_CLASS</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">    <tt class="py-name">header</tt><tt class="py-op">.</tt><tt class="py-name">networkCode</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfp_client</tt><tt class="py-op">.</tt><tt class="py-name">network_code</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">    <tt class="py-name">header</tt><tt class="py-op">.</tt><tt class="py-name">applicationName</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfp_client</tt><tt class="py-op">.</tt><tt class="py-name">application_name</tt><tt class="py-op">,</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">                                      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="googleads.adwords._AdWordsHeaderHandler._LIB_SIG
+googleads.dfa._DfaHeaderHandler._LIB_SIG
+googleads.dfp._DfpHeaderHandler._LIB_SIG" class="py-name" href="#" onclick="return doclink('link-44', '_LIB_SIG', 'link-38');">_LIB_SIG</a></tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">    <tt class="py-name">suds_client</tt><tt class="py-op">.</tt><tt class="py-name">set_options</tt><tt class="py-op">(</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-name">soapheaders</tt><tt class="py-op">=</tt><tt class="py-name">header</tt><tt class="py-op">,</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfp_client</tt><tt class="py-op">.</tt><tt class="py-name">oauth2_client</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method googleads.oauth2.GoogleOAuth2Client.CreateHttpHeader()=googleads.oauth2.GoogleOAuth2Client-class.html#CreateHttpHeader,Method googleads.oauth2.GoogleRefreshTokenClient.CreateHttpHeader()=googleads.oauth2.GoogleRefreshTokenClient-class.html#CreateHttpHeader"><a title="googleads.oauth2.GoogleOAuth2Client.CreateHttpHeader
+googleads.oauth2.GoogleRefreshTokenClient.CreateHttpHeader" class="py-name" href="#" onclick="return doclink('link-45', 'CreateHttpHeader', 'link-45');">CreateHttpHeader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="FilterStatement"></a><div id="FilterStatement-def"><a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt> <a class="py-toggle" href="#" id="FilterStatement-toggle" onclick="return toggle('FilterStatement');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.dfp.FilterStatement-class.html">FilterStatement</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FilterStatement-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="FilterStatement-expanded"><a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">  <tt class="py-docstring">"""A statement object for PQL and get*ByStatement queries.</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line"><tt class="py-docstring">  The FilterStatement object allows for user control of limit/offset. It</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line"><tt class="py-docstring">  automatically limits queries to the suggested page limit if not explicitly</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-docstring">  set.</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"> </tt>
+<a name="FilterStatement.__init__"></a><div id="FilterStatement.__init__-def"><a name="L234"></a><tt class="py-lineno">234</tt> <a class="py-toggle" href="#" id="FilterStatement.__init__-toggle" onclick="return toggle('FilterStatement.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.FilterStatement-class.html#__init__">__init__</a><tt class="py-op">(</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">      <tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">where_clause</tt><tt class="py-op">=</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-param">values</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">limit</tt><tt class="py-op">=</tt><tt id="link-46" class="py-name"><a title="googleads.dfp.SUGGESTED_PAGE_LIMIT" class="py-name" href="#" onclick="return doclink('link-46', 'SUGGESTED_PAGE_LIMIT', 'link-4');">SUGGESTED_PAGE_LIMIT</a></tt><tt class="py-op">,</tt> <tt class="py-param">offset</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FilterStatement.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="FilterStatement.__init__-expanded"><a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">where_clause</tt> <tt class="py-op">=</tt> <tt class="py-name">where_clause</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">values</tt> <tt class="py-op">=</tt> <tt class="py-name">values</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">limit</tt> <tt class="py-op">=</tt> <tt class="py-name">limit</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">offset</tt> <tt class="py-op">=</tt> <tt class="py-name">offset</tt> </tt>
+</div><a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line"> </tt>
+<a name="FilterStatement.ToStatement"></a><div id="FilterStatement.ToStatement-def"><a name="L241"></a><tt class="py-lineno">241</tt> <a class="py-toggle" href="#" id="FilterStatement.ToStatement-toggle" onclick="return toggle('FilterStatement.ToStatement');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.FilterStatement-class.html#ToStatement">ToStatement</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FilterStatement.ToStatement-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="FilterStatement.ToStatement-expanded"><a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">    <tt class="py-docstring">"""Returns this statement object in the format DFP requires."""</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">{</tt><tt class="py-string">'query'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'%s LIMIT %d OFFSET %d'</tt> <tt class="py-op">%</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">                      <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">where_clause</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">limit</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">offset</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">            <tt class="py-string">'values'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">values</tt><tt class="py-op">}</tt> </tt>
+</div></div><a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader"></a><div id="DataDownloader-def"><a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt> <a class="py-toggle" href="#" id="DataDownloader-toggle" onclick="return toggle('DataDownloader');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html">DataDownloader</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DataDownloader-expanded"><a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">  <tt class="py-docstring">"""A utility that can be used to download reports and PQL result sets."""</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader.__init__"></a><div id="DataDownloader.__init__-def"><a name="L251"></a><tt class="py-lineno">251</tt> <a class="py-toggle" href="#" id="DataDownloader.__init__-toggle" onclick="return toggle('DataDownloader.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dfp_client</tt><tt class="py-op">,</tt> <tt class="py-param">version</tt><tt class="py-op">=</tt><tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt id="link-47" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-47', '_SERVICE_MAP', 'link-6');">_SERVICE_MAP</a></tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">               <tt class="py-param">server</tt><tt class="py-op">=</tt><tt class="py-string">'https://www.google.com'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader.__init__-expanded"><a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes a DataDownloader.</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"><tt class="py-docstring">      dfp_client: The DfpClient whose attributes will be used to authorize your</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line"><tt class="py-docstring">          report download and PQL query requests.</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"><tt class="py-docstring">      version: A string identifying the DFP version to connect to. This defaults</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line"><tt class="py-docstring">          to what is currently the latest version. This will be updated in</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line"><tt class="py-docstring">          future releases to point to what is then the latest version.</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"><tt class="py-docstring">      server: A string identifying the webserver hosting the DFP API.</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">server</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'/'</tt><tt class="py-op">:</tt> <tt class="py-name">server</tt> <tt class="py-op">=</tt> <tt class="py-name">server</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfp_client</tt> <tt class="py-op">=</tt> <tt class="py-name">dfp_client</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_version</tt> <tt class="py-op">=</tt> <tt class="py-name">version</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_server</tt> <tt class="py-op">=</tt> <tt class="py-name">server</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_report_service</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_pql_service</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader._GetReportService"></a><div id="DataDownloader._GetReportService-def"><a name="L271"></a><tt class="py-lineno">271</tt> <a class="py-toggle" href="#" id="DataDownloader._GetReportService-toggle" onclick="return toggle('DataDownloader._GetReportService');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#_GetReportService">_GetReportService</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader._GetReportService-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader._GetReportService-expanded"><a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">    <tt class="py-docstring">"""Lazily initializes a report service client."""</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_report_service</tt><tt class="py-op">:</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_report_service</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfp_client</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name" targets="Method googleads.adwords.AdWordsClient.GetService()=googleads.adwords.AdWordsClient-class.html#GetService,Method googleads.dfa.DfaClient.GetService()=googleads.dfa.DfaClient-class.html#GetService,Method googleads.dfp.DfpClient.GetService()=googleads.dfp.DfpClient-class.html#GetService"><a title="googleads.adwords.AdWordsClient.GetService
+googleads.dfa.DfaClient.GetService
+googleads.dfp.DfpClient.GetService" class="py-name" href="#" onclick="return doclink('link-48', 'GetService', 'link-48');">GetService</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">          <tt class="py-string">'ReportService'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_version</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_server</tt><tt class="py-op">)</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_report_service</tt> </tt>
+</div><a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader._GetPqlService"></a><div id="DataDownloader._GetPqlService-def"><a name="L278"></a><tt class="py-lineno">278</tt> <a class="py-toggle" href="#" id="DataDownloader._GetPqlService-toggle" onclick="return toggle('DataDownloader._GetPqlService');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#_GetPqlService">_GetPqlService</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader._GetPqlService-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader._GetPqlService-expanded"><a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">    <tt class="py-docstring">"""Lazily initializes a PQL service client."""</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_pql_service</tt><tt class="py-op">:</tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line">      <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_pql_service</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfp_client</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="googleads.adwords.AdWordsClient.GetService
+googleads.dfa.DfaClient.GetService
+googleads.dfp.DfpClient.GetService" class="py-name" href="#" onclick="return doclink('link-49', 'GetService', 'link-48');">GetService</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line">          <tt class="py-string">'PublisherQueryLanguageService'</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_version</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_server</tt><tt class="py-op">)</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_pql_service</tt> </tt>
+</div><a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader.WaitForReport"></a><div id="DataDownloader.WaitForReport-def"><a name="L285"></a><tt class="py-lineno">285</tt> <a class="py-toggle" href="#" id="DataDownloader.WaitForReport-toggle" onclick="return toggle('DataDownloader.WaitForReport');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#WaitForReport">WaitForReport</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">report_job</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader.WaitForReport-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader.WaitForReport-expanded"><a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">    <tt class="py-docstring">"""Runs a report, then waits (blocks) for the report to finish generating.</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line"><tt class="py-docstring">      report_job: The report job to wait for. This may be a dictionary or an</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line"><tt class="py-docstring">          instance of the suds-generated ReportJob class.</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line"><tt class="py-docstring">      The completed report job's ID as a string.</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line"><tt class="py-docstring">    Raises:</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line"><tt class="py-docstring">      A DfpReportError if the report job fails to complete.</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line">    <tt class="py-name">service</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name" targets="Method googleads.dfp.DataDownloader._GetReportService()=googleads.dfp.DataDownloader-class.html#_GetReportService"><a title="googleads.dfp.DataDownloader._GetReportService" class="py-name" href="#" onclick="return doclink('link-50', '_GetReportService', 'link-50');">_GetReportService</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">    <tt class="py-name">report_job_id</tt> <tt class="py-op">=</tt> <tt class="py-name">service</tt><tt class="py-op">.</tt><tt class="py-name">runReportJob</tt><tt class="py-op">(</tt><tt class="py-name">report_job</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-string">'id'</tt><tt class="py-op">]</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">    <tt class="py-name">status</tt> <tt class="py-op">=</tt> <tt class="py-name">service</tt><tt class="py-op">.</tt><tt class="py-name">getReportJob</tt><tt class="py-op">(</tt><tt class="py-name">report_job_id</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-string">'reportJobStatus'</tt><tt class="py-op">]</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">status</tt> <tt class="py-op">!=</tt> <tt class="py-string">'COMPLETED'</tt> <tt class="py-keyword">and</tt> <tt class="py-name">status</tt> <tt class="py-op">!=</tt> <tt class="py-string">'FAILED'</tt><tt class="py-op">:</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line">      <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">debug</tt><tt class="py-op">(</tt><tt class="py-string">'Report job status: %s'</tt><tt class="py-op">,</tt> <tt class="py-name">status</tt><tt class="py-op">)</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">      <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">30</tt><tt class="py-op">)</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line">      <tt class="py-name">status</tt> <tt class="py-op">=</tt> <tt class="py-name">service</tt><tt class="py-op">.</tt><tt class="py-name">getReportJob</tt><tt class="py-op">(</tt><tt class="py-name">report_job_id</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-string">'reportJobStatus'</tt><tt class="py-op">]</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line"> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">status</tt> <tt class="py-op">==</tt> <tt class="py-string">'FAILED'</tt><tt class="py-op">:</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line">      <tt class="py-keyword">raise</tt> <tt id="link-51" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-51', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="googleads.errors" class="py-name" href="#" onclick="return doclink('link-52', 'errors', 'link-3');">errors</a></tt><tt class="py-op">.</tt><tt id="link-53" class="py-name" targets="Class googleads.errors.DfpReportError=googleads.errors.DfpReportError-class.html"><a title="googleads.errors.DfpReportError" class="py-name" href="#" onclick="return doclink('link-53', 'DfpReportError', 'link-53');">DfpReportError</a></tt><tt class="py-op">(</tt><tt class="py-name">report_job_id</tt><tt class="py-op">)</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">      <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">debug</tt><tt class="py-op">(</tt><tt class="py-string">'Report has completed successfully'</tt><tt class="py-op">)</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">report_job_id</tt> </tt>
+</div><a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader.DownloadReportToFile"></a><div id="DataDownloader.DownloadReportToFile-def"><a name="L312"></a><tt class="py-lineno">312</tt> <a class="py-toggle" href="#" id="DataDownloader.DownloadReportToFile-toggle" onclick="return toggle('DataDownloader.DownloadReportToFile');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#DownloadReportToFile">DownloadReportToFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">report_job_id</tt><tt class="py-op">,</tt> <tt class="py-param">export_format</tt><tt class="py-op">,</tt> <tt class="py-param">outfile</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader.DownloadReportToFile-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader.DownloadReportToFile-expanded"><a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">    <tt class="py-docstring">"""Downloads report data and writes it to a file.</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line"><tt class="py-docstring">    The report job must be completed before calling this function.</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line"><tt class="py-docstring">      report_job_id: The ID of the report job to wait for, as a string.</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line"><tt class="py-docstring">      export_format: The export format for the report file, as a string.</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line"><tt class="py-docstring">      outfile: A writeable, file-like object to write to.</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">    <tt class="py-name">service</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="googleads.dfp.DataDownloader._GetReportService" class="py-name" href="#" onclick="return doclink('link-54', '_GetReportService', 'link-50');">_GetReportService</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line">    <tt class="py-name">report_url</tt> <tt class="py-op">=</tt> <tt class="py-name">service</tt><tt class="py-op">.</tt><tt class="py-name">getReportDownloadURL</tt><tt class="py-op">(</tt><tt class="py-name">report_job_id</tt><tt class="py-op">,</tt> <tt class="py-name">export_format</tt><tt class="py-op">)</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line">    <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">urllib2</tt><tt class="py-op">.</tt><tt class="py-name">urlopen</tt><tt class="py-op">(</tt><tt class="py-name">report_url</tt><tt class="py-op">)</tt> </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">True</tt><tt class="py-op">:</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line">      <tt class="py-name">chunk</tt> <tt class="py-op">=</tt> <tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt id="link-55" class="py-name"><a title="googleads.adwords._CHUNK_SIZE
+googleads.dfp._CHUNK_SIZE" class="py-name" href="#" onclick="return doclink('link-55', '_CHUNK_SIZE', 'link-5');">_CHUNK_SIZE</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">chunk</tt><tt class="py-op">:</tt> <tt class="py-keyword">break</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">      <tt class="py-name">outfile</tt><tt class="py-op">.</tt><tt class="py-name">write</tt><tt class="py-op">(</tt><tt class="py-name">chunk</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader.DownloadPqlResultToList"></a><div id="DataDownloader.DownloadPqlResultToList-def"><a name="L330"></a><tt class="py-lineno">330</tt> <a class="py-toggle" href="#" id="DataDownloader.DownloadPqlResultToList-toggle" onclick="return toggle('DataDownloader.DownloadPqlResultToList');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#DownloadPqlResultToList">DownloadPqlResultToList</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pql_query</tt><tt class="py-op">,</tt> <tt class="py-param">values</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader.DownloadPqlResultToList-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader.DownloadPqlResultToList-expanded"><a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line">    <tt class="py-docstring">"""Downloads the results of a PQL query to a list.</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line"><tt class="py-docstring">      pql_query: str a statement filter to apply (the query should not include</tt> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line"><tt class="py-docstring">                 the limit or the offset)</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line"><tt class="py-docstring">      values: list dict of bind values to use with the pql_query.</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line"><tt class="py-docstring">      a list of lists with the first being the header row and each subsequent</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line"><tt class="py-docstring">      list being a row of results.</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">    <tt class="py-name">results</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name" targets="Method googleads.dfp.DataDownloader._PageThroughPqlSet()=googleads.dfp.DataDownloader-class.html#_PageThroughPqlSet"><a title="googleads.dfp.DataDownloader._PageThroughPqlSet" class="py-name" href="#" onclick="return doclink('link-56', '_PageThroughPqlSet', 'link-56');">_PageThroughPqlSet</a></tt><tt class="py-op">(</tt><tt class="py-name">pql_query</tt><tt class="py-op">,</tt> <tt class="py-name">results</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">,</tt> <tt class="py-name">values</tt><tt class="py-op">)</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">results</tt> </tt>
+</div><a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader.DownloadPqlResultSetToCsv"></a><div id="DataDownloader.DownloadPqlResultSetToCsv-def"><a name="L347"></a><tt class="py-lineno">347</tt> <a class="py-toggle" href="#" id="DataDownloader.DownloadPqlResultSetToCsv-toggle" onclick="return toggle('DataDownloader.DownloadPqlResultSetToCsv');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#DownloadPqlResultSetToCsv">DownloadPqlResultSetToCsv</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pql_query</tt><tt class="py-op">,</tt> <tt class="py-param">file_handle</tt><tt class="py-op">,</tt> <tt class="py-param">values</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader.DownloadPqlResultSetToCsv-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader.DownloadPqlResultSetToCsv-expanded"><a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line">    <tt class="py-docstring">"""Downloads the results of a PQL query to CSV.</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line"><tt class="py-docstring">      pql_query: str a statement filter to apply (the query should not include</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line"><tt class="py-docstring">                 the limit or the offset)</tt> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line"><tt class="py-docstring">      file_handle: file the file object to write to.</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line"><tt class="py-docstring">      values: list dict of bind values to use with the pql_query.</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line">    <tt class="py-name">pql_writer</tt> <tt class="py-op">=</tt> <tt class="py-name">csv</tt><tt class="py-op">.</tt><tt class="py-name">writer</tt><tt class="py-op">(</tt><tt class="py-name">file_handle</tt><tt class="py-op">,</tt> <tt class="py-name">delimiter</tt><tt class="py-op">=</tt><tt class="py-string">','</tt><tt class="py-op">,</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line">                            <tt class="py-name">quotechar</tt><tt class="py-op">=</tt><tt class="py-string">'"'</tt><tt class="py-op">,</tt> <tt class="py-name">quoting</tt><tt class="py-op">=</tt><tt class="py-name">csv</tt><tt class="py-op">.</tt><tt class="py-name">QUOTE_NONNUMERIC</tt><tt class="py-op">)</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="googleads.dfp.DataDownloader._PageThroughPqlSet" class="py-name" href="#" onclick="return doclink('link-57', '_PageThroughPqlSet', 'link-56');">_PageThroughPqlSet</a></tt><tt class="py-op">(</tt><tt class="py-name">pql_query</tt><tt class="py-op">,</tt> <tt class="py-name">pql_writer</tt><tt class="py-op">.</tt><tt class="py-name">writerow</tt><tt class="py-op">,</tt> <tt class="py-name">values</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader._ConvertValueForCsv"></a><div id="DataDownloader._ConvertValueForCsv-def"><a name="L361"></a><tt class="py-lineno">361</tt> <a class="py-toggle" href="#" id="DataDownloader._ConvertValueForCsv-toggle" onclick="return toggle('DataDownloader._ConvertValueForCsv');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#_ConvertValueForCsv">_ConvertValueForCsv</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pql_value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader._ConvertValueForCsv-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader._ConvertValueForCsv-expanded"><a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line">    <tt class="py-docstring">"""Sanitizes a field value from a Value object to a CSV suitable format.</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"><tt class="py-docstring">      pql_value: dict a dictionary containing the data for a single field of an</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"><tt class="py-docstring">                 entity.</tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line"><tt class="py-docstring">      str a CSV writer friendly value formatted by Value.Type.</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line">    <tt class="py-name">field</tt> <tt class="py-op">=</tt> <tt class="py-name">pql_value</tt><tt class="py-op">[</tt><tt class="py-string">'value'</tt><tt class="py-op">]</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line"> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">pql_value</tt><tt class="py-op">[</tt><tt class="py-string">'Value.Type'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'TextValue'</tt><tt class="py-op">:</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">field</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">'utf-8'</tt><tt class="py-op">)</tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">pql_value</tt><tt class="py-op">[</tt><tt class="py-string">'Value.Type'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'NumberValue'</tt><tt class="py-op">:</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">field</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> <tt class="py-string">'.'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">field</tt> <tt class="py-keyword">else</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">field</tt><tt class="py-op">)</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">pql_value</tt><tt class="py-op">[</tt><tt class="py-string">'Value.Type'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'DateTimeValue'</tt><tt class="py-op">:</tt> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Method googleads.dfp.DataDownloader._ConvertDateTimeToOffset()=googleads.dfp.DataDownloader-class.html#_ConvertDateTimeToOffset"><a title="googleads.dfp.DataDownloader._ConvertDateTimeToOffset" class="py-name" href="#" onclick="return doclink('link-58', '_ConvertDateTimeToOffset', 'link-58');">_ConvertDateTimeToOffset</a></tt><tt class="py-op">(</tt><tt class="py-name">field</tt><tt class="py-op">)</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">pql_value</tt><tt class="py-op">[</tt><tt class="py-string">'Value.Type'</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'DateValue'</tt><tt class="py-op">:</tt> </tt>
+<a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">date</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">field</tt><tt class="py-op">[</tt><tt class="py-string">'date'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'year'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line">                           <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">field</tt><tt class="py-op">[</tt><tt class="py-string">'date'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'month'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">                           <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">field</tt><tt class="py-op">[</tt><tt class="py-string">'date'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'day'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">isoformat</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">field</tt> </tt>
+</div><a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader._PageThroughPqlSet"></a><div id="DataDownloader._PageThroughPqlSet-def"><a name="L386"></a><tt class="py-lineno">386</tt> <a class="py-toggle" href="#" id="DataDownloader._PageThroughPqlSet-toggle" onclick="return toggle('DataDownloader._PageThroughPqlSet');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#_PageThroughPqlSet">_PageThroughPqlSet</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pql_query</tt><tt class="py-op">,</tt> <tt class="py-param">output_function</tt><tt class="py-op">,</tt> <tt class="py-param">values</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader._PageThroughPqlSet-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader._PageThroughPqlSet-expanded"><a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">    <tt class="py-docstring">"""Pages through a pql_query and performs an action (output_function).</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line"><tt class="py-docstring">      pql_query: str a statement filter to apply (the query should not include</tt> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line"><tt class="py-docstring">                 the limit or the offset)</tt> </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line"><tt class="py-docstring">      output_function: the function to call to output the results (csv or in</tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line"><tt class="py-docstring">                       memory)</tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line"><tt class="py-docstring">      values: list dict of bind values to use with the pql_query.</tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">    <tt class="py-name">result_set_size</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line">    <tt class="py-name">pql_service</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name" targets="Method googleads.dfp.DataDownloader._GetPqlService()=googleads.dfp.DataDownloader-class.html#_GetPqlService"><a title="googleads.dfp.DataDownloader._GetPqlService" class="py-name" href="#" onclick="return doclink('link-59', '_GetPqlService', 'link-59');">_GetPqlService</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line">    <tt class="py-name">filter_statement</tt> <tt class="py-op">=</tt> <tt id="link-60" class="py-name" targets="Class googleads.dfp.FilterStatement=googleads.dfp.FilterStatement-class.html"><a title="googleads.dfp.FilterStatement" class="py-name" href="#" onclick="return doclink('link-60', 'FilterStatement', 'link-60');">FilterStatement</a></tt><tt class="py-op">(</tt><tt class="py-name">pql_query</tt><tt class="py-op">,</tt> <tt class="py-name">values</tt><tt class="py-op">,</tt> <tt id="link-61" class="py-name"><a title="googleads.dfp.SUGGESTED_PAGE_LIMIT" class="py-name" href="#" onclick="return doclink('link-61', 'SUGGESTED_PAGE_LIMIT', 'link-4');">SUGGESTED_PAGE_LIMIT</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line"> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">True</tt><tt class="py-op">:</tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line">      <tt class="py-name">response</tt> <tt class="py-op">=</tt> <tt class="py-name">pql_service</tt><tt class="py-op">.</tt><tt class="py-name">select</tt><tt class="py-op">(</tt><tt class="py-name">filter_statement</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name" targets="Method googleads.dfp.FilterStatement.ToStatement()=googleads.dfp.FilterStatement-class.html#ToStatement"><a title="googleads.dfp.FilterStatement.ToStatement" class="py-name" href="#" onclick="return doclink('link-62', 'ToStatement', 'link-62');">ToStatement</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line"> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-string">'rows'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">response</tt><tt class="py-op">:</tt> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line">        <tt class="py-comment"># Write the header row only on first pull</tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">filter_statement</tt><tt class="py-op">.</tt><tt class="py-name">offset</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line">          <tt class="py-name">header</tt> <tt class="py-op">=</tt> <tt class="py-name">response</tt><tt class="py-op">[</tt><tt class="py-string">'columnTypes'</tt><tt class="py-op">]</tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">          <tt class="py-name">output_function</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">label</tt><tt class="py-op">[</tt><tt class="py-string">'labelName'</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">encode</tt><tt class="py-op">(</tt><tt class="py-string">'utf-8'</tt><tt class="py-op">)</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">                           <tt class="py-keyword">for</tt> <tt class="py-name">label</tt> <tt class="py-keyword">in</tt> <tt class="py-name">header</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line">        <tt class="py-name">entities</tt> <tt class="py-op">=</tt> <tt class="py-name">response</tt><tt class="py-op">[</tt><tt class="py-string">'rows'</tt><tt class="py-op">]</tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line">        <tt class="py-name">result_set_size</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">entities</tt><tt class="py-op">)</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line"> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">entity</tt> <tt class="py-keyword">in</tt> <tt class="py-name">entities</tt><tt class="py-op">:</tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line">          <tt class="py-name">output_function</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name" targets="Method googleads.dfp.DataDownloader._ConvertValueForCsv()=googleads.dfp.DataDownloader-class.html#_ConvertValueForCsv"><a title="googleads.dfp.DataDownloader._ConvertValueForCsv" class="py-name" href="#" onclick="return doclink('link-63', '_ConvertValueForCsv', 'link-63');">_ConvertValueForCsv</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">value</tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line">                           <tt class="py-keyword">in</tt> <tt class="py-name">entity</tt><tt class="py-op">[</tt><tt class="py-string">'values'</tt><tt class="py-op">]</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line"> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line">        <tt class="py-name">filter_statement</tt><tt class="py-op">.</tt><tt class="py-name">offset</tt> <tt class="py-op">+=</tt> <tt class="py-name">result_set_size</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">result_set_size</tt> <tt class="py-op">!=</tt> <tt id="link-64" class="py-name"><a title="googleads.dfp.SUGGESTED_PAGE_LIMIT" class="py-name" href="#" onclick="return doclink('link-64', 'SUGGESTED_PAGE_LIMIT', 'link-4');">SUGGESTED_PAGE_LIMIT</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line">          <tt class="py-keyword">break</tt> </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line">      <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line">        <tt class="py-keyword">break</tt> </tt>
+</div><a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line"> </tt>
+<a name="DataDownloader._ConvertDateTimeToOffset"></a><div id="DataDownloader._ConvertDateTimeToOffset-def"><a name="L423"></a><tt class="py-lineno">423</tt> <a class="py-toggle" href="#" id="DataDownloader._ConvertDateTimeToOffset-toggle" onclick="return toggle('DataDownloader._ConvertDateTimeToOffset');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfp.DataDownloader-class.html#_ConvertDateTimeToOffset">_ConvertDateTimeToOffset</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">date_time_value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataDownloader._ConvertDateTimeToOffset-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DataDownloader._ConvertDateTimeToOffset-expanded"><a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line">    <tt class="py-docstring">"""Converts the PQL formatted response for a dateTime object.</tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line"><tt class="py-docstring">    Output conforms to ISO 8061 format, e.g. 'YYYY-MM-DDTHH:MM:SSz.'</tt> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line"><tt class="py-docstring">      date_time_value: dict The date time value from the PQL response.</tt> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line"><tt class="py-docstring">      str A string representation of the date time value uniform to</tt> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line"><tt class="py-docstring">          ReportService.</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">    <tt class="py-name">date_time_obj</tt> <tt class="py-op">=</tt> <tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">datetime</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">date_time_value</tt><tt class="py-op">[</tt><tt class="py-string">'date'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'year'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line">                                      <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">date_time_value</tt><tt class="py-op">[</tt><tt class="py-string">'date'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'month'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line">                                      <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">date_time_value</tt><tt class="py-op">[</tt><tt class="py-string">'date'</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-string">'day'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line">                                      <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">date_time_value</tt><tt class="py-op">[</tt><tt class="py-string">'hour'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line">                                      <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">date_time_value</tt><tt class="py-op">[</tt><tt class="py-string">'minute'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line">                                      <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">date_time_value</tt><tt class="py-op">[</tt><tt class="py-string">'second'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line">    <tt class="py-name">date_time_str</tt> <tt class="py-op">=</tt> <tt class="py-name">pytz</tt><tt class="py-op">.</tt><tt class="py-name">timezone</tt><tt class="py-op">(</tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line">        <tt class="py-name">date_time_value</tt><tt class="py-op">[</tt><tt class="py-string">'timeZoneID'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">localize</tt><tt class="py-op">(</tt><tt class="py-name">date_time_obj</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">isoformat</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L443"></a><tt class="py-lineno">443</tt>  <tt class="py-line"> </tt>
+<a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">date_time_str</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">5</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'00:00'</tt><tt class="py-op">:</tt> </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">date_time_str</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">6</tt><tt class="py-op">]</tt> <tt class="py-op">+</tt> <tt class="py-string">'Z'</tt> </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line">      <tt class="py-keyword">return</tt> <tt class="py-name">date_time_str</tt> </tt>
+</div></div><a name="L448"></a><tt class="py-lineno">448</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="googleads-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/jdilallo/jdilallo-test">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Mar  4 13:19:36 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

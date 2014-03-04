@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>googleads.dfa</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="googleads-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/jdilallo/jdilallo-test">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="googleads-module.html">Package&nbsp;googleads</a> ::
+        Module&nbsp;dfa
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="googleads.dfa-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="googleads.dfa-module.html">Module googleads.dfa</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># Copyright 2013 Google Inc. All Rights Reserved.</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># Licensed under the Apache License, Version 2.0 (the "License");</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># you may not use this file except in compliance with the License.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># You may obtain a copy of the License at</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#      http://www.apache.org/licenses/LICENSE-2.0</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># Unless required by applicable law or agreed to in writing, software</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># distributed under the License is distributed on an "AS IS" BASIS,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># See the License for the specific language governing permissions and</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># limitations under the License.</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">"""Client library for the DoubleClick for Advertisers API."""</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">'Joseph DiLallo'</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">client</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">sax</tt><tt class="py-op">.</tt><tt class="py-name">element</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">transport</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">wsse</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package googleads=googleads-module.html"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-0', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module googleads.common=googleads.common-module.html"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-1', 'common', 'link-1');">common</a></tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-2" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-2', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module googleads.errors=googleads.errors-module.html"><a title="googleads.errors" class="py-name" href="#" onclick="return doclink('link-3', 'errors', 'link-3');">errors</a></tt> </tt>
+<a name="DfaClient"></a><div id="DfaClient-def"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="DfaClient-toggle" onclick="return toggle('DfaClient');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.dfa.DfaClient-class.html">DfaClient</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfaClient-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DfaClient-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">  <tt class="py-docstring">"""A central location to set headers and create web service clients.</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">  Attributes:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">    username: A string representation of your DFA username.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    oauth2_client: A googleads.oauth2.GoogleOAuth2Client used to authorize your</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">        requests.</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">    application_name: An arbitrary string which will be used to identify your</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">        application</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">    https_proxy: A string identifying the URL of a proxy that all HTTPS requests</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">        should be routed through. Modifying this value will not affect any SOAP</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        service clients you've already created.</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">  """</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">  <tt class="py-comment"># The key in the storage yaml which contains DFA data.</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">  <tt id="link-4" class="py-name" targets="Variable googleads.adwords.AdWordsClient._YAML_KEY=googleads.adwords.AdWordsClient-class.html#_YAML_KEY,Variable googleads.dfa.DfaClient._YAML_KEY=googleads.dfa.DfaClient-class.html#_YAML_KEY,Variable googleads.dfp.DfpClient._YAML_KEY=googleads.dfp.DfpClient-class.html#_YAML_KEY"><a title="googleads.adwords.AdWordsClient._YAML_KEY
+googleads.dfa.DfaClient._YAML_KEY
+googleads.dfp.DfpClient._YAML_KEY" class="py-name" href="#" onclick="return doclink('link-4', '_YAML_KEY', 'link-4');">_YAML_KEY</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'dfa'</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">  <tt class="py-comment"># A list of values which must be provided to use DFA.</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">  <tt id="link-5" class="py-name" targets="Variable googleads.adwords.AdWordsClient._REQUIRED_INIT_VALUES=googleads.adwords.AdWordsClient-class.html#_REQUIRED_INIT_VALUES,Variable googleads.dfa.DfaClient._REQUIRED_INIT_VALUES=googleads.dfa.DfaClient-class.html#_REQUIRED_INIT_VALUES,Variable googleads.dfp.DfpClient._REQUIRED_INIT_VALUES=googleads.dfp.DfpClient-class.html#_REQUIRED_INIT_VALUES"><a title="googleads.adwords.AdWordsClient._REQUIRED_INIT_VALUES
+googleads.dfa.DfaClient._REQUIRED_INIT_VALUES
+googleads.dfp.DfpClient._REQUIRED_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-5', '_REQUIRED_INIT_VALUES', 'link-5');">_REQUIRED_INIT_VALUES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-string">'application_name'</tt><tt class="py-op">,</tt> <tt class="py-string">'username'</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">  <tt class="py-comment"># A list of values which may optionally be provided when using DFA.</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">  <tt id="link-6" class="py-name" targets="Variable googleads.adwords.AdWordsClient._OPTIONAL_INIT_VALUES=googleads.adwords.AdWordsClient-class.html#_OPTIONAL_INIT_VALUES,Variable googleads.dfa.DfaClient._OPTIONAL_INIT_VALUES=googleads.dfa.DfaClient-class.html#_OPTIONAL_INIT_VALUES,Variable googleads.dfp.DfpClient._OPTIONAL_INIT_VALUES=googleads.dfp.DfpClient-class.html#_OPTIONAL_INIT_VALUES"><a title="googleads.adwords.AdWordsClient._OPTIONAL_INIT_VALUES
+googleads.dfa.DfaClient._OPTIONAL_INIT_VALUES
+googleads.dfp.DfpClient._OPTIONAL_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-6', '_OPTIONAL_INIT_VALUES', 'link-6');">_OPTIONAL_INIT_VALUES</a></tt> <tt class="py-op">=</tt> <tt class="py-name">tuple</tt><tt class="py-op">(</tt><tt class="py-string">'https_proxy'</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">  <tt class="py-comment"># The format of SOAP service WSDLs. A server, version, and service name need</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">  <tt class="py-comment"># to be formatted in.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">  <tt id="link-7" class="py-name" targets="Variable googleads.adwords.AdWordsClient._SOAP_SERVICE_FORMAT=googleads.adwords.AdWordsClient-class.html#_SOAP_SERVICE_FORMAT,Variable googleads.dfa.DfaClient._SOAP_SERVICE_FORMAT=googleads.dfa.DfaClient-class.html#_SOAP_SERVICE_FORMAT,Variable googleads.dfp.DfpClient._SOAP_SERVICE_FORMAT=googleads.dfp.DfpClient-class.html#_SOAP_SERVICE_FORMAT"><a title="googleads.adwords.AdWordsClient._SOAP_SERVICE_FORMAT
+googleads.dfa.DfaClient._SOAP_SERVICE_FORMAT
+googleads.dfp.DfpClient._SOAP_SERVICE_FORMAT" class="py-name" href="#" onclick="return doclink('link-7', '_SOAP_SERVICE_FORMAT', 'link-7');">_SOAP_SERVICE_FORMAT</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'%s/%s/api/dfa-api/%s?wsdl'</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">  <tt class="py-comment"># A giant dictionary of DFA versions and the services they support.</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">  <tt id="link-8" class="py-name" targets="Variable googleads.adwords._SERVICE_MAP=googleads.adwords-module.html#_SERVICE_MAP,Variable googleads.dfa.DfaClient._SERVICE_MAP=googleads.dfa.DfaClient-class.html#_SERVICE_MAP,Variable googleads.dfp._SERVICE_MAP=googleads.dfp-module.html#_SERVICE_MAP"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-8', '_SERVICE_MAP', 'link-8');">_SERVICE_MAP</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">      <tt class="py-string">'v1.19'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'ad'</tt><tt class="py-op">,</tt> <tt class="py-string">'advertiser'</tt><tt class="py-op">,</tt> <tt class="py-string">'advertisergroup'</tt><tt class="py-op">,</tt> <tt class="py-string">'campaign'</tt><tt class="py-op">,</tt> <tt class="py-string">'changelog'</tt><tt class="py-op">,</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                <tt class="py-string">'contentcategory'</tt><tt class="py-op">,</tt> <tt class="py-string">'creative'</tt><tt class="py-op">,</tt> <tt class="py-string">'creativefield'</tt><tt class="py-op">,</tt> <tt class="py-string">'creativegroup'</tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">                <tt class="py-string">'login'</tt><tt class="py-op">,</tt> <tt class="py-string">'network'</tt><tt class="py-op">,</tt> <tt class="py-string">'placement'</tt><tt class="py-op">,</tt> <tt class="py-string">'site'</tt><tt class="py-op">,</tt> <tt class="py-string">'size'</tt><tt class="py-op">,</tt> <tt class="py-string">'spotlight'</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                <tt class="py-string">'strategy'</tt><tt class="py-op">,</tt> <tt class="py-string">'subnetwork'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'userrole'</tt><tt class="py-op">,</tt> <tt class="py-string">'report'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">      <tt class="py-string">'v1.20'</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-string">'ad'</tt><tt class="py-op">,</tt> <tt class="py-string">'advertiser'</tt><tt class="py-op">,</tt> <tt class="py-string">'advertisergroup'</tt><tt class="py-op">,</tt> <tt class="py-string">'campaign'</tt><tt class="py-op">,</tt> <tt class="py-string">'changelog'</tt><tt class="py-op">,</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                <tt class="py-string">'contentcategory'</tt><tt class="py-op">,</tt> <tt class="py-string">'creative'</tt><tt class="py-op">,</tt> <tt class="py-string">'creativefield'</tt><tt class="py-op">,</tt> <tt class="py-string">'creativegroup'</tt><tt class="py-op">,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">                <tt class="py-string">'login'</tt><tt class="py-op">,</tt> <tt class="py-string">'network'</tt><tt class="py-op">,</tt> <tt class="py-string">'placement'</tt><tt class="py-op">,</tt> <tt class="py-string">'site'</tt><tt class="py-op">,</tt> <tt class="py-string">'size'</tt><tt class="py-op">,</tt> <tt class="py-string">'spotlight'</tt><tt class="py-op">,</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                <tt class="py-string">'strategy'</tt><tt class="py-op">,</tt> <tt class="py-string">'subnetwork'</tt><tt class="py-op">,</tt> <tt class="py-string">'user'</tt><tt class="py-op">,</tt> <tt class="py-string">'userrole'</tt><tt class="py-op">,</tt> <tt class="py-string">'report'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">  <tt class="py-op">}</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">  <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="DfaClient.LoadFromStorage"></a><div id="DfaClient.LoadFromStorage-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="DfaClient.LoadFromStorage-toggle" onclick="return toggle('DfaClient.LoadFromStorage');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfa.DfaClient-class.html#LoadFromStorage">LoadFromStorage</a><tt class="py-op">(</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">      <tt class="py-param">cls</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">=</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">expanduser</tt><tt class="py-op">(</tt><tt class="py-string">'~'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'googleads.yaml'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfaClient.LoadFromStorage-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfaClient.LoadFromStorage-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-docstring">"""Creates an DfaClient with information stored in a yaml file.</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">      path: The path string to the file containing cached DFA data.</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">      A DfaClient initialized with the values cached in the file.</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring">    Raises:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">      A GoogleAdsValueError if the given yaml file does not contain the</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">      information necessary to instantiate a client object - either a</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">      required key was missing or an OAuth 2.0 key was missing.</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">cls</tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt id="link-9" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-9', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-10', 'common', 'link-1');">common</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Class Method googleads.adwords.AdWordsClient.LoadFromStorage()=googleads.adwords.AdWordsClient-class.html#LoadFromStorage,Function googleads.common.LoadFromStorage()=googleads.common-module.html#LoadFromStorage,Class Method googleads.dfa.DfaClient.LoadFromStorage()=googleads.dfa.DfaClient-class.html#LoadFromStorage,Class Method googleads.dfp.DfpClient.LoadFromStorage()=googleads.dfp.DfpClient-class.html#LoadFromStorage"><a title="googleads.adwords.AdWordsClient.LoadFromStorage
+googleads.common.LoadFromStorage
+googleads.dfa.DfaClient.LoadFromStorage
+googleads.dfp.DfpClient.LoadFromStorage" class="py-name" href="#" onclick="return doclink('link-11', 'LoadFromStorage', 'link-11');">LoadFromStorage</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-name">path</tt><tt class="py-op">,</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="googleads.adwords.AdWordsClient._YAML_KEY
+googleads.dfa.DfaClient._YAML_KEY
+googleads.dfp.DfpClient._YAML_KEY" class="py-name" href="#" onclick="return doclink('link-12', '_YAML_KEY', 'link-4');">_YAML_KEY</a></tt><tt class="py-op">,</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="googleads.adwords.AdWordsClient._REQUIRED_INIT_VALUES
+googleads.dfa.DfaClient._REQUIRED_INIT_VALUES
+googleads.dfp.DfpClient._REQUIRED_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-13', '_REQUIRED_INIT_VALUES', 'link-5');">_REQUIRED_INIT_VALUES</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="googleads.adwords.AdWordsClient._OPTIONAL_INIT_VALUES
+googleads.dfa.DfaClient._OPTIONAL_INIT_VALUES
+googleads.dfp.DfpClient._OPTIONAL_INIT_VALUES" class="py-name" href="#" onclick="return doclink('link-14', '_OPTIONAL_INIT_VALUES', 'link-6');">_OPTIONAL_INIT_VALUES</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="DfaClient.__init__"></a><div id="DfaClient.__init__-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="DfaClient.__init__-toggle" onclick="return toggle('DfaClient.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfa.DfaClient-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">username</tt><tt class="py-op">,</tt> <tt class="py-param">oauth2_client</tt><tt class="py-op">,</tt> <tt class="py-param">application_name</tt><tt class="py-op">,</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">               <tt class="py-param">https_proxy</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfaClient.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfaClient.__init__-expanded"><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes a DfaClient.</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">    For more information on these arguments, see our SOAP headers guide:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">    https://developers.google.com/doubleclick-advertisers/docs/SOAP_headers</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">      username: A string representation of your DFA username. This is likely not</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">          the same as your Google Account name.</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">      oauth2_client: A googleads.oauth2.GoogleOAuth2Client used to authorize</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">          your requests.</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">      application_name: An arbitrary string which will be used to identify your</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">          application</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">      https_proxy: A string identifying the URL of a proxy that all HTTPS</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">          requests should be routed through.</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">username</tt> <tt class="py-op">=</tt> <tt class="py-name">username</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">oauth2_client</tt> <tt class="py-op">=</tt> <tt class="py-name">oauth2_client</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">application_name</tt> <tt class="py-op">=</tt> <tt class="py-name">application_name</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">https_proxy</tt> <tt class="py-op">=</tt> <tt class="py-name">https_proxy</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_header_handler</tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name" targets="Class googleads.dfa._DfaHeaderHandler=googleads.dfa._DfaHeaderHandler-class.html"><a title="googleads.dfa._DfaHeaderHandler" class="py-name" href="#" onclick="return doclink('link-15', '_DfaHeaderHandler', 'link-15');">_DfaHeaderHandler</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"> </tt>
+<a name="DfaClient.GetService"></a><div id="DfaClient.GetService-def"><a name="L110"></a><tt class="py-lineno">110</tt> <a class="py-toggle" href="#" id="DfaClient.GetService-toggle" onclick="return toggle('DfaClient.GetService');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfa.DfaClient-class.html#GetService">GetService</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">service_name</tt><tt class="py-op">,</tt> <tt class="py-param">version</tt><tt class="py-op">=</tt><tt class="py-name">sorted</tt><tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-16', '_SERVICE_MAP', 'link-8');">_SERVICE_MAP</a></tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                 <tt class="py-param">server</tt><tt class="py-op">=</tt><tt class="py-string">'https://advertisersapi.doubleclick.com'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DfaClient.GetService-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="DfaClient.GetService-expanded"><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-docstring">"""Creates a service client for the given service.</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">      service_name: A string identifying which DFA service to create a service</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">          client for.</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">      [optional]</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">      version: A string identifying the DFA version to connect to. This defaults</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">          to what is currently the latest version. This will be updated in</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring">          future releases to point to what is then the latest version.</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">      server: A string identifying the webserver hosting the DFA API.</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">    Returns:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring">      A suds.client.ServiceSelector which has the headers and proxy configured</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">          for use.</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">    Raises:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">      A GoogleAdsValueError if the service or version provided do not exist.</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-name">server</tt> <tt class="py-op">=</tt> <tt class="py-name">server</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-keyword">if</tt> <tt class="py-name">server</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">==</tt> <tt class="py-string">'/'</tt> <tt class="py-keyword">else</tt> <tt class="py-name">server</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">      <tt class="py-name">client</tt> <tt class="py-op">=</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">client</tt><tt class="py-op">.</tt><tt class="py-name">Client</tt><tt class="py-op">(</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">          <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="googleads.adwords.AdWordsClient._SOAP_SERVICE_FORMAT
+googleads.dfa.DfaClient._SOAP_SERVICE_FORMAT
+googleads.dfp.DfpClient._SOAP_SERVICE_FORMAT" class="py-name" href="#" onclick="return doclink('link-17', '_SOAP_SERVICE_FORMAT', 'link-7');">_SOAP_SERVICE_FORMAT</a></tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">server</tt><tt class="py-op">,</tt> <tt class="py-name">version</tt><tt class="py-op">,</tt> <tt class="py-name">service_name</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">transport</tt><tt class="py-op">.</tt><tt class="py-name">TransportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">      <tt class="py-keyword">if</tt> <tt class="py-name">version</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-18', '_SERVICE_MAP', 'link-8');">_SERVICE_MAP</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">service_name</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-19', '_SERVICE_MAP', 'link-8');">_SERVICE_MAP</a></tt><tt class="py-op">[</tt><tt class="py-name">version</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">          <tt class="py-keyword">raise</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">          <tt class="py-keyword">raise</tt> <tt id="link-20" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-20', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="googleads.errors" class="py-name" href="#" onclick="return doclink('link-21', 'errors', 'link-3');">errors</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Class googleads.errors.GoogleAdsValueError=googleads.errors.GoogleAdsValueError-class.html"><a title="googleads.errors.GoogleAdsValueError" class="py-name" href="#" onclick="return doclink('link-22', 'GoogleAdsValueError', 'link-22');">GoogleAdsValueError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">              <tt class="py-string">'Unrecognized service for the DFA API. Service given: %s '</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">              <tt class="py-string">'Supported services: %s'</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">              <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">service_name</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-23', '_SERVICE_MAP', 'link-8');">_SERVICE_MAP</a></tt><tt class="py-op">[</tt><tt class="py-name">version</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">      <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-24" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-24', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="googleads.errors" class="py-name" href="#" onclick="return doclink('link-25', 'errors', 'link-3');">errors</a></tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="googleads.errors.GoogleAdsValueError" class="py-name" href="#" onclick="return doclink('link-26', 'GoogleAdsValueError', 'link-22');">GoogleAdsValueError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-string">'Unrecognized version of the DFA API. Version given: %s Supported '</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">            <tt class="py-string">'versions: %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">version</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="googleads.adwords._SERVICE_MAP
+googleads.dfa.DfaClient._SERVICE_MAP
+googleads.dfp._SERVICE_MAP" class="py-name" href="#" onclick="return doclink('link-27', '_SERVICE_MAP', 'link-8');">_SERVICE_MAP</a></tt><tt class="py-op">.</tt><tt class="py-name">keys</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">https_proxy</tt><tt class="py-op">:</tt> <tt class="py-name">client</tt><tt class="py-op">.</tt><tt class="py-name">set_options</tt><tt class="py-op">(</tt><tt class="py-name">proxy</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-string">'https'</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">https_proxy</tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-28" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-28', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-29', 'common', 'link-1');">common</a></tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Class googleads.common.SudsServiceProxy=googleads.common.SudsServiceProxy-class.html"><a title="googleads.common.SudsServiceProxy" class="py-name" href="#" onclick="return doclink('link-30', 'SudsServiceProxy', 'link-30');">SudsServiceProxy</a></tt><tt class="py-op">(</tt><tt class="py-name">client</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_header_handler</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"> </tt>
+<a name="_DfaHeaderHandler"></a><div id="_DfaHeaderHandler-def"><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt> <a class="py-toggle" href="#" id="_DfaHeaderHandler-toggle" onclick="return toggle('_DfaHeaderHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="googleads.dfa._DfaHeaderHandler-class.html">_DfaHeaderHandler</a><tt class="py-op">(</tt><tt class="py-base-class">googleads</tt><tt class="py-op">.</tt><tt class="py-base-class">common</tt><tt class="py-op">.</tt><tt class="py-base-class">HeaderHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_DfaHeaderHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_DfaHeaderHandler-expanded"><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">  <tt class="py-docstring">"""Handler which sets the headers for a DFA SOAP call."""</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">  <tt class="py-comment"># The library signature for DFA, to be appended to all application_names.</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">  <tt id="link-31" class="py-name" targets="Variable googleads.adwords._AdWordsHeaderHandler._LIB_SIG=googleads.adwords._AdWordsHeaderHandler-class.html#_LIB_SIG,Variable googleads.dfa._DfaHeaderHandler._LIB_SIG=googleads.dfa._DfaHeaderHandler-class.html#_LIB_SIG,Variable googleads.dfp._DfpHeaderHandler._LIB_SIG=googleads.dfp._DfpHeaderHandler-class.html#_LIB_SIG"><a title="googleads.adwords._AdWordsHeaderHandler._LIB_SIG
+googleads.dfa._DfaHeaderHandler._LIB_SIG
+googleads.dfp._DfpHeaderHandler._LIB_SIG" class="py-name" href="#" onclick="return doclink('link-31', '_LIB_SIG', 'link-31');">_LIB_SIG</a></tt> <tt class="py-op">=</tt> <tt id="link-32" class="py-name"><a title="googleads" class="py-name" href="#" onclick="return doclink('link-32', 'googleads', 'link-0');">googleads</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="googleads.common" class="py-name" href="#" onclick="return doclink('link-33', 'common', 'link-1');">common</a></tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Function googleads.common.GenerateLibSig()=googleads.common-module.html#GenerateLibSig"><a title="googleads.common.GenerateLibSig" class="py-name" href="#" onclick="return doclink('link-34', 'GenerateLibSig', 'link-34');">GenerateLibSig</a></tt><tt class="py-op">(</tt><tt class="py-string">'DfaApi-Python'</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="_DfaHeaderHandler.__init__"></a><div id="_DfaHeaderHandler.__init__-def"><a name="L158"></a><tt class="py-lineno">158</tt> <a class="py-toggle" href="#" id="_DfaHeaderHandler.__init__-toggle" onclick="return toggle('_DfaHeaderHandler.__init__');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfa._DfaHeaderHandler-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">dfa_client</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_DfaHeaderHandler.__init__-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="_DfaHeaderHandler.__init__-expanded"><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">    <tt class="py-docstring">"""Initializes a DfaHeaderHandler.</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring">    Args:</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">      dfa_client: The DfaClient whose data will be used to fill in the headers.</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">          We retain a reference to this object so that the header handler picks</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring">          up changes to the client.</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfa_client</tt> <tt class="py-op">=</tt> <tt class="py-name">dfa_client</tt> </tt>
+</div><a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="_DfaHeaderHandler.SetHeaders"></a><div id="_DfaHeaderHandler.SetHeaders-def"><a name="L168"></a><tt class="py-lineno">168</tt> <a class="py-toggle" href="#" id="_DfaHeaderHandler.SetHeaders-toggle" onclick="return toggle('_DfaHeaderHandler.SetHeaders');">-</a><tt class="py-line">  <tt class="py-keyword">def</tt> <a class="py-def-name" href="googleads.dfa._DfaHeaderHandler-class.html#SetHeaders">SetHeaders</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">suds_client</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_DfaHeaderHandler.SetHeaders-collapsed" style="display:none;" pad="+++" indent="++++++"></div><div id="_DfaHeaderHandler.SetHeaders-expanded"><a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">    <tt class="py-docstring">"""Sets the SOAP and HTTP headers on the given suds client."""</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">    <tt class="py-name">wsse_header</tt> <tt class="py-op">=</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">wsse</tt><tt class="py-op">.</tt><tt class="py-name">Security</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-name">wsse_header</tt><tt class="py-op">.</tt><tt class="py-name">tokens</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">wsse</tt><tt class="py-op">.</tt><tt class="py-name">UsernameToken</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfa_client</tt><tt class="py-op">.</tt><tt class="py-name">username</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-name">request_header</tt> <tt class="py-op">=</tt> <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">sax</tt><tt class="py-op">.</tt><tt class="py-name">element</tt><tt class="py-op">.</tt><tt class="py-name">Element</tt><tt class="py-op">(</tt><tt class="py-string">'RequestHeader'</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">    <tt class="py-name">request_header</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-name">suds</tt><tt class="py-op">.</tt><tt class="py-name">sax</tt><tt class="py-op">.</tt><tt class="py-name">element</tt><tt class="py-op">.</tt><tt class="py-name">Element</tt><tt class="py-op">(</tt><tt class="py-string">'applicationName'</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">            <tt class="py-string">''</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfa_client</tt><tt class="py-op">.</tt><tt class="py-name">application_name</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="googleads.adwords._AdWordsHeaderHandler._LIB_SIG
+googleads.dfa._DfaHeaderHandler._LIB_SIG
+googleads.dfp._DfpHeaderHandler._LIB_SIG" class="py-name" href="#" onclick="return doclink('link-35', '_LIB_SIG', 'link-31');">_LIB_SIG</a></tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">    <tt class="py-name">suds_client</tt><tt class="py-op">.</tt><tt class="py-name">set_options</tt><tt class="py-op">(</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-name">wsse</tt><tt class="py-op">=</tt><tt class="py-name">wsse_header</tt><tt class="py-op">,</tt> <tt class="py-name">soapheaders</tt><tt class="py-op">=</tt><tt class="py-name">request_header</tt><tt class="py-op">,</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-name">headers</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dfa_client</tt><tt class="py-op">.</tt><tt class="py-name">oauth2_client</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method googleads.oauth2.GoogleOAuth2Client.CreateHttpHeader()=googleads.oauth2.GoogleOAuth2Client-class.html#CreateHttpHeader,Method googleads.oauth2.GoogleRefreshTokenClient.CreateHttpHeader()=googleads.oauth2.GoogleRefreshTokenClient-class.html#CreateHttpHeader"><a title="googleads.oauth2.GoogleOAuth2Client.CreateHttpHeader
+googleads.oauth2.GoogleRefreshTokenClient.CreateHttpHeader" class="py-name" href="#" onclick="return doclink('link-36', 'CreateHttpHeader', 'link-36');">CreateHttpHeader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="googleads-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="https://github.com/jdilallo/jdilallo-test">Project Homepage</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Tue Mar  4 13:19:36 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
